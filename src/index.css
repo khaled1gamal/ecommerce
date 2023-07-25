@@ -9,3 +9,7 @@
 .css-83ijpv-MuiTypography-root{
   color: aliceblue !important;
 }
+.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium{
+
+  border-radius: 10px !important;
+}
