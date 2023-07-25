@@ -14,7 +14,7 @@ const MyBoox = ({ icon,title }) => {
   return (
     <Box sx={{display:'flex'}}>
       {icon}
-      <Box>
+      <Box> 
         <Typography sx={{fontWeight:600,fontSize:25,color:theme.palette.error.main,}} variant="body1" color="initial">
           {title}
         </Typography>
