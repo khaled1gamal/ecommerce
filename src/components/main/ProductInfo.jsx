@@ -13,10 +13,10 @@ const ProductInfo = () => {
         flexDirection: { xs: "column", sm: "row" },
       }}
     >
-      <Box>
+      <Box sx={{display:"flex"}}>
         <img src="src/images/hero-1.jpg" alt="" />
       </Box>
-      <Box sx={{textAlign:{xs:"center",sm:"left"}}}>
+      <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
         <Typography variant="h5">Product Name</Typography>
         <Typography color={theme.palette.error.main} variant="h6">
           $150
@@ -25,7 +25,11 @@ const ProductInfo = () => {
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
-        <Stack justifyContent={{xs:"center",sm:"flex-start"}} gap={1} direction={"row"}>
+        <Stack
+          justifyContent={{ xs: "center", sm: "flex-start" }}
+          gap={1}
+          direction={"row"}
+        >
           {[
             "src/images/hero-4.jpg",
             "src/images/hero-4.jpg",

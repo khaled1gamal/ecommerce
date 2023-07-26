@@ -22,7 +22,7 @@ const MainPro = () => {
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
