@@ -4,6 +4,8 @@ import Header3 from "./components/header/Header3";
 import Hero from "./components/hero/Hero";
 import IconSec from "./components/icon/IconSec";
 import MainPro from "./components/main/MainPro";
+import Footer from "./components/footer/Footer";
+import ScrollTop from "./components/btnScroll/ScrollTop";
 
 import { CssBaseline,  ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
@@ -27,7 +29,8 @@ function App() {
         <Hero />
         <IconSec />
         <MainPro />
-        <h1>this is app.jsx</h1>
+        <Footer />
+        <ScrollTop />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

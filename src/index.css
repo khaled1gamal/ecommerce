@@ -3,13 +3,20 @@
 * {
   font-family: 'Open Sans', sans-serif;
 }
-.border{
+
+.border {
   border: 2px solid red !important;
 }
-.css-83ijpv-MuiTypography-root{
+
+.css-83ijpv-MuiTypography-root {
   color: aliceblue !important;
 }
-.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium{
+
+.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium {
 
   border-radius: 10px !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
