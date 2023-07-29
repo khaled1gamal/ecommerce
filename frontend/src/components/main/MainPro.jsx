@@ -100,10 +100,10 @@ const MainPro = () => {
           direction={"row"}
           sx={{ flexWrap: "wrap", my: 3 }}
         >
-          {data.data.map((item) => {
+          {data.data.map((item, i) => {
             return (
               <Card
-                key={item}
+                key={i}
                 sx={{
                   maxWidth: 300,
                   ":hover .MuiCardMedia-root": {
