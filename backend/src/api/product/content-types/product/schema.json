@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "product"
+    "displayName": "product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,11 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "proImg": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "proName": {
       "type": "string",
@@ -37,8 +39,9 @@
     "proGroup": {
       "type": "enumeration",
       "enum": [
-        "men",
-        "women"
+        "frame",
+        "sunGlasses",
+        "lenses"
       ],
       "required": true
     }

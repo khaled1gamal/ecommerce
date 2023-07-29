@@ -19,9 +19,8 @@ import { Close } from "@mui/icons-material";
 import ProductInfo from "./ProductInfo";
 import { useGetproductByNameQuery } from "../../Redux/product";
 const MainPro = () => {
-  const [alignment, setAlignment] = useState("all");
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handleChange = (event, newValue) => {
+    setmyDataIs(newValue);
   };
   const [open, setOpen] = useState(false);
 
@@ -33,11 +32,36 @@ const MainPro = () => {
     setOpen(false);
   };
 
-  const { data, error, isLoading } = useGetproductByNameQuery(
-    "products?populate=*"
-  );
+  const allProductsAPI = "products?populate=*";
+  const frameProductsAPI = "products?populate=*&filters[proGroup][$eq]=frame";
+  const lensesProductsAPI = "products?populate=*&filters[proGroup][$eq]=lenses";
+  const SunGlassesProductsAPI =
+    "products?populate=*&filters[proGroup][$eq]=sunGlasses";
+
+  const [myDataIs, setmyDataIs] = useState(allProductsAPI);
+  const { data, error, isLoading } = useGetproductByNameQuery(myDataIs);
   if (data) {
     console.log(data.data);
+  }
+
+  if (isLoading) {
+    return (
+      <Typography variant="h1" color="initial">
+        Loading
+      </Typography>
+    );
+  }
+
+  if (error) {
+    return (
+      <Typography sx={{ textAlign: "center" }} variant="h3" color="initial">
+        Has Error......
+        {
+          // @ts-ignore
+          error.message
+        }
+      </Typography>
+    );
   }
 
   if (data) {
@@ -57,15 +81,17 @@ const MainPro = () => {
               justifyContent: "center",
             }}
             color="error"
-            value={alignment}
+            value={myDataIs}
             exclusive
             onChange={handleChange}
             aria-label="Platform"
           >
-            <ToggleButton value="all">ALL</ToggleButton>
-            <ToggleButton value="web">Frame</ToggleButton>
-            <ToggleButton value="android">SunGlasses</ToggleButton>
-            <ToggleButton value="ios">Lensess</ToggleButton>
+            <ToggleButton value={allProductsAPI}>ALL</ToggleButton>
+            <ToggleButton value={frameProductsAPI}>Frame</ToggleButton>
+            <ToggleButton value={SunGlassesProductsAPI}>
+              SunGlasses
+            </ToggleButton>
+            <ToggleButton value={lensesProductsAPI}>Lensess</ToggleButton>
           </ToggleButtonGroup>
         </Stack>
         <Stack
@@ -91,7 +117,10 @@ const MainPro = () => {
                   component="img"
                   alt="green iguana"
                   height="140"
-                  image={`http://localhost:1337${item.attributes.proImg.data[0].attributes.url}`}
+                  // @ts-ignore
+                  image={`${import.meta.env.VITE_BASE_URL}${
+                    item.attributes.proImg.data[0].attributes.url
+                  }`}
                 />
                 <CardContent>
                   <Stack
