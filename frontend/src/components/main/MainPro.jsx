@@ -40,9 +40,7 @@ const MainPro = () => {
 
   const [myDataIs, setmyDataIs] = useState(allProductsAPI);
   const { data, error, isLoading } = useGetproductByNameQuery(myDataIs);
-  if (data) {
-    console.log(data.data);
-  }
+
 
   if (isLoading) {
     return (
