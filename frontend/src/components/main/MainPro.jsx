@@ -41,7 +41,6 @@ const MainPro = () => {
   const [myDataIs, setmyDataIs] = useState(allProductsAPI);
   const { data, error, isLoading } = useGetproductByNameQuery(myDataIs);
 
-
   if (isLoading) {
     return (
       <Typography variant="h1" color="initial">
@@ -116,9 +115,7 @@ const MainPro = () => {
                   alt="green iguana"
                   height="140"
                   // @ts-ignore
-                  image={`${import.meta.env.VITE_BASE_URL}${
-                    item.attributes.proImg.data[0].attributes.url
-                  }`}
+                  image={`${item.attributes.proImg.data[0].attributes.url}`}
                 />
                 <CardContent>
                   <Stack
