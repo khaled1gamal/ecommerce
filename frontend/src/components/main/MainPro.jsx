@@ -4,6 +4,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  CircularProgress,
   Container,
   Dialog,
   IconButton,
@@ -20,7 +21,10 @@ import ProductInfo from "./ProductInfo";
 import { useGetproductByNameQuery } from "../../Redux/product";
 const MainPro = () => {
   const handleChange = (event, newValue) => {
-    setmyDataIs(newValue);
+    if (newValue !== null) {
+      
+      setmyDataIs(newValue);
+    }
   };
   const [open, setOpen] = useState(false);
 
@@ -41,10 +45,13 @@ const MainPro = () => {
   const [myDataIs, setmyDataIs] = useState(allProductsAPI);
   const { data, error, isLoading } = useGetproductByNameQuery(myDataIs);
 
+  const [addBTN, setaddBTN] = useState({});
+
   if (isLoading) {
     return (
-      <Typography variant="h1" color="initial">
-        Loading
+      <Typography sx={{ textAlign: "center" }} variant="h4" color="initial">
+        <CircularProgress /><br/><br/>
+        Loading.....
       </Typography>
     );
   }
@@ -52,10 +59,10 @@ const MainPro = () => {
   if (error) {
     return (
       <Typography sx={{ textAlign: "center" }} variant="h3" color="initial">
-        Has Error......
+        Try Again Later
         {
           // @ts-ignore
-          error.message
+          error.error
         }
       </Typography>
     );
@@ -136,12 +143,15 @@ const MainPro = () => {
                 </CardContent>
                 <CardActions sx={{ justifyContent: "space-between" }}>
                   <Button
-                    onClick={handleClickOpen}
+                    onClick={() => {
+                      handleClickOpen()
+                      setaddBTN(item)
+                    }}
                     sx={{ textTransform: "capitalize" }}
                     size="medium"
                   >
-                    <AddShoppingCartIcon sx={{ mr: 1 }} fontSize="small" /> add
-                    to cart
+                    <AddShoppingCartIcon sx={{ mr: 1 }} fontSize="small" /> 
+                    add to cart
                   </Button>
                   <Rating
                     name="read-only"
@@ -157,6 +167,7 @@ const MainPro = () => {
         </Stack>
         <Dialog
           sx={{
+            
             ".MuiPaper-root": {
               minWidth: { xs: "90%", md: 700 },
               display: "flex",
@@ -175,7 +186,7 @@ const MainPro = () => {
           >
             <Close />
           </IconButton>
-          <ProductInfo />
+          <ProductInfo addBTN={addBTN} />
         </Dialog>
       </Container>
     );

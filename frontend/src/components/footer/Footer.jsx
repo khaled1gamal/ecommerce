@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Box  sx={{ textAlign: "center",mt:10,mb:3 }}>
       <Box>
-        <Typography>&copy; 2019 - All rights reserved.</Typography>
+        <Typography>&copy; 2023 - All rights reserved.</Typography>
         By
         <Button>
           KHALED

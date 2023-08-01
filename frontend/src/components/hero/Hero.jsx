@@ -7,8 +7,8 @@ import "swiper/css/pagination";
 import "./HeroSlider.css";
 
 const mySlider = [
-  { text: "MEN", link: "src/images/hero-2.jpg" },
-  { text: "WOMEN", link: "src/images/hero-4.jpg" },
+  { text: "MEN", link: "./images/hero-2.jpg" },
+  { text: "WOMEN", link: "./images/hero-4.jpg" },
 ];
 
 const Hero = () => {
@@ -51,7 +51,7 @@ const Hero = () => {
         }}
       >
         <Box sx={{ position: "relative" }}>
-          <img src="src/images/hero-3.jpg" alt="" />
+          <img src="./images/hero-3.jpg" alt="" />
           <Stack
             sx={{
               position: "absolute",
@@ -85,7 +85,7 @@ const Hero = () => {
           </Stack>
         </Box>
         <Box sx={{ position: "relative" }}>
-          <img src="src/images/hero-1.jpg" alt="" />
+          <img src="./images/hero-1.jpg" alt="" />
           <Stack
             sx={{
               position: "absolute",

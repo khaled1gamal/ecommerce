@@ -1,42 +1,77 @@
-import { Box, Button, Stack, Typography, useTheme } from "@mui/material";
+/* eslint-disable react/prop-types */
+import {
+  Box,
+  Button,
+  Stack,
+  ToggleButton,
+  Typography,
+  useTheme,
+} from "@mui/material";
 
-const ProductInfo = () => {
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { useState } from "react";
+
+const ProductInfo = ({ addBTN }) => {
   const theme = useTheme();
+  const [selectedImg, setSelectedImg] = useState(0);
 
   return (
     <Box
       sx={{
+        width: "100%",
         display: "flex",
-        alignItems: "center",
+        justifyContent: { sx: "center", sm: "space-around" },
         gap: 1.5,
         p: 1,
         flexDirection: { xs: "column", sm: "row" },
       }}
     >
-      <Box sx={{display:"flex"}}>
-        <img src="src/images/hero-1.jpg" alt="" />
+      <Box
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        <img
+          style={{ maxWidth: "450px" }}
+          src={addBTN.attributes.proImg.data[selectedImg].attributes.url}
+          alt=""
+        />
       </Box>
       <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
-        <Typography variant="h5">Product Name</Typography>
+        <Typography variant="h5">{addBTN.attributes.proName}</Typography>
         <Typography color={theme.palette.error.main} variant="h6">
-          $150
+          ${addBTN.attributes.proPrice}
         </Typography>
-        <Typography component={"p"}>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Typography component={"p"}>{addBTN.attributes.proInfo}</Typography>
         <Stack
           justifyContent={{ xs: "center", sm: "flex-start" }}
           gap={1}
           direction={"row"}
         >
-          {[
-            "src/images/hero-4.jpg",
-            "src/images/hero-4.jpg",
-            "src/images/hero-4.jpg",
-          ].map((item, i) => {
-            return <img key={i} width={60} src={item} alt="" />;
-          })}
+          <ToggleButtonGroup
+            value={selectedImg}
+            exclusive
+            aria-label="text alignment"
+            sx={{".Mui-selected":{opacity:"1"}}}
+          >
+            {addBTN.attributes.proImg.data.map((item, i) => {
+              return (
+                <ToggleButton
+                  key={i}
+                  value={i}
+                  sx={{ p: 0, mx: 1, opacity: "0.5" }}
+                >
+                  <img
+                    onClick={() => {
+                      setSelectedImg(i);
+                    }}
+                    style={{ cursor: "pointer" }}
+                    width={60}
+                    src={item.attributes.url}
+                    alt=""
+                  />
+                </ToggleButton>
+              );
+            })}
+          </ToggleButtonGroup>
         </Stack>
         <Button sx={{ textTransform: "capitalize", mt: 1 }} size="medium">
           add to cart
